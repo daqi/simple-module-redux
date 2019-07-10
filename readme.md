@@ -6,7 +6,7 @@
 npm install simple-module-redux
 ```
 
-## Module
+## Module { name, state, reducers, actions }
 
 ```javascript
 const asyncFn = payload => {
@@ -40,7 +40,7 @@ const moduleDemo = {
             });
         },
         asyncUpdate({ commit, state }, payload) {
-            asyncFn(payload).then(res => {
+            return asyncFn(payload).then(res => {
                 commit({
                     type: 'save',
                     payload: { number: res.number }
@@ -63,6 +63,18 @@ const store = smrCreateStore(
     preloadedState,
     applyMiddleware(reduxLogger)
 );
+store.dispatch({
+    type: 'number/add',
+    payload: 5
+});
+store.dispatch({
+    type: 'number/minus',
+    payload: 3
+});
+store.dispatch({
+    type: 'number/asyncUpdate',
+    payload: 666
+});
 ```
 
 ## Other
@@ -71,7 +83,7 @@ const store = smrCreateStore(
 
 ```javascript
 import { createStore, applyMiddleware } from 'redux';
-import { smrMiddleware } from 'simple-module-redux';
+import { smrMiddleware, generateReducer } from 'simple-module-redux';
 import reduxLogger from 'redux-logger';
 import modules from './modules';
 const reducer = generateReducer(modules);

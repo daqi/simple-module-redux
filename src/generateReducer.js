@@ -9,15 +9,15 @@ export function generateSmrReducer(module) {
   }
   const name = module.name;
   smrNameCheck(name);
-  for (let key in module.smrActions) {
+  for (let key in module.actions) {
     smrNameCheck(key, 'action');
     const type = name + '/' + key;
-    smrActions[type] = module.smrActions[key];
+    smrActions[type] = module.actions[key];
   }
-  for (let key in module.smrReducers) {
+  for (let key in module.reducers) {
     smrNameCheck(key, 'reducer');
     const type = name + '/' + key;
-    smrReducers[type] = module.smrReducers[key];
+    smrReducers[type] = module.reducers[key];
   }
   return function(state, action) {
     if (isSmrReducer(action)) {

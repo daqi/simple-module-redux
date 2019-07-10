@@ -2,10 +2,10 @@ import smrActions from './actionMap';
 import smrReducers from './reducerMap';
 
 export function isSmrAction(action) {
-  return action.type && smrActions[action.type];
+  return 'type' in action && action.type in smrActions;
 }
 export function isSmrReducer(action) {
-  return action.type && smrReducers[action.type];
+  return 'type' in action && action.type in smrReducers;
 }
 
 export function getSmrName(action) {
