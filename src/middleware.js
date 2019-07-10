@@ -5,6 +5,7 @@ const smrMiddleware = ({ getState }) => next => action => {
   if (isSmrAction(action)) {
     const rootState = getState();
     let name = getSmrName(action);
+    
     return smrActions[action.type](
       {
         rootState,

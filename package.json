@@ -19,7 +19,7 @@
     ],
     "scripts": {
         "build": "father build",
-        "eslint": "eslint \"lib/**/*.+(js|jsx)\""
+        "eslint": "eslint \"src/**/*.+(js|jsx)\" --fix"
     },
     "devDependencies": {
         "eslint": "^5.16.0",
