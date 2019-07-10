@@ -56,6 +56,9 @@ export default function generateSmrReducers(modules) {
 
   const reducers = {};
   Object.keys(modules).forEach(key => {
+    if (modules.name in reducers) {
+      throw new Error(`modules.name ${modules.name} is duplicated.`);
+    }
     reducers[modules.name] = generateSmrReducer(modules[key]);
   });
 
