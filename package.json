@@ -1,6 +1,6 @@
 {
     "name": "simple-module-redux",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "license": "MIT",
     "repository": "https://github.com/daqi/simple-module-redux.git",
     "keywords": [
@@ -13,9 +13,9 @@
     "main": "lib/index.js",
     "module": "es/index.js",
     "files": [
-      "lib",
-      "es",
-      "src"
+        "lib",
+        "es",
+        "src"
     ],
     "scripts": {
         "build": "father build",
