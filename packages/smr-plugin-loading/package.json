@@ -1,5 +1,5 @@
 {
-    "name": "smr-plugin-loading",
+    "name": "@daqi/smr-plugin-loading",
     "version": "0.0.8",
     "license": "MIT",
     "repository": "https://github.com/daqi/simple-module-redux.git",
@@ -19,5 +19,6 @@
     ],
     "peerdependencies": {
         "smr": "^4.0.3"
-    }
+    },
+    "gitHead": "85b391ab15043f98b8b484bfc9df050788523d94"
 }
