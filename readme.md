@@ -51,6 +51,15 @@ const moduleDemo = {
     }
 };
 ```
+## Modules ##
+```javascript
+const modules = {
+    [demoModule.name]: demoModule,
+    [otherModule.name]: otherModule,
+    [listModule.name]: listModule,
+    [itemModule.name]: itemModule
+}
+```
 
 ## Usage
 
