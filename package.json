@@ -12,7 +12,8 @@
     "author": "qiyunjiang <daqidaqi@qq.com>",
     "scripts": {
         "init": "lerna init",
-        "build": "father build"
+        "build": "father build",
+        "publish": "lerna publish"
     },
     "devDependencies": {
         "eslint": "^5.16.0",

@@ -1,12 +1,12 @@
 {
-    "name": "smr-plugin-immer",
+    "name": "smr-plugin-loading",
     "version": "0.0.7",
     "license": "MIT",
     "repository": "https://github.com/daqi/simple-module-redux.git",
     "keywords": [
         "smr",
         "plugin",
-        "immer",
+        "loading",
         "redux"
     ],
     "author": "qiyunjiang <daqidaqi@qq.com>",
