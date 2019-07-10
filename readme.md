@@ -58,6 +58,7 @@ const moduleDemo = {
 
 ```javascript
 import { smrCreateStore } from 'simple-module-redux';
+import reduxLogger from 'redux-logger';
 const store = smrCreateStore(
     modules,
     preloadedState,

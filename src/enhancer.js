@@ -7,6 +7,6 @@ export default function smrEnhancer(createStore) {
   return (modules, preloadedState) => {
     const reducer = generateReducer(modules);
     const enhancer = applyMiddleware(smrMiddleware);
-    enhancer(createStore)(reducer, preloadedState);
+    return enhancer(createStore)(reducer, preloadedState);
   };
 }
