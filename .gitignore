@@ -40,5 +40,5 @@ node_modules/
 /logs/
 /dist/
 yarn.lock
-/es/
-/lib/
+es/
+lib/

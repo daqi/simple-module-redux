@@ -1,0 +1,23 @@
+{
+    "name": "smr",
+    "version": "0.0.7",
+    "license": "MIT",
+    "repository": "https://github.com/daqi/simple-module-redux.git",
+    "keywords": [
+        "redux",
+        "middleware",
+        "redux-middleware",
+        "module"
+    ],
+    "author": "qiyunjiang <daqidaqi@qq.com>",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "files": [
+        "lib",
+        "es",
+        "src"
+    ],
+    "dependencies": {
+        "redux": "^4.0.3"
+    }
+}
