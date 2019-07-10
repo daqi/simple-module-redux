@@ -1,0 +1,35 @@
+{
+    "name": "simple-module-redux",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/daqi/simple-module-redux.git",
+    "author": "qiyunjiang <daqidaqi@qq.com>",
+    "license": "MIT",
+    "scripts": {
+        "build": "father build",
+        "eslint": "eslint \"lib/**/*.+(js|jsx)\""
+    },
+    "devDependencies": {
+        "eslint": "^5.16.0",
+        "husky": "^3.0.0",
+        "lint-staged": "^9.1.0",
+        "prettier": "^1.18.2"
+    },
+    "dependencies": {
+        "father": "^2.13.4"
+    },
+    "peerDenendencies": {
+        "redux": "^4.0.3"
+    },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx,cjs,mjs}": [
+            "eslint --fix",
+            "prettier --write",
+            "git add"
+        ],
+        "*.{json,md,css,less,sass,scss}": [
+            "prettier --write",
+            "git add"
+        ]
+    }
+}
