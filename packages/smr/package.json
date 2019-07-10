@@ -1,6 +1,6 @@
 {
     "name": "smr",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "license": "MIT",
     "repository": "https://github.com/daqi/simple-module-redux.git",
     "keywords": [
