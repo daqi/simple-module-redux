@@ -1,10 +1,22 @@
 {
     "name": "simple-module-redux",
-    "version": "1.0.0",
-    "main": "index.js",
-    "repository": "https://github.com/daqi/simple-module-redux.git",
-    "author": "qiyunjiang <daqidaqi@qq.com>",
+    "version": "0.0.1",
     "license": "MIT",
+    "repository": "https://github.com/daqi/simple-module-redux.git",
+    "keywords": [
+        "redux",
+        "middleware",
+        "redux-middleware",
+        "module"
+    ],
+    "author": "qiyunjiang <daqidaqi@qq.com>",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "files": [
+      "lib",
+      "es",
+      "src"
+    ],
     "scripts": {
         "build": "father build",
         "eslint": "eslint \"lib/**/*.+(js|jsx)\""
@@ -13,12 +25,10 @@
         "eslint": "^5.16.0",
         "husky": "^3.0.0",
         "lint-staged": "^9.1.0",
-        "prettier": "^1.18.2"
-    },
-    "dependencies": {
+        "prettier": "^1.18.2",
         "father": "^2.13.4"
     },
-    "peerDenendencies": {
+    "dependencies": {
         "redux": "^4.0.3"
     },
     "lint-staged": {
