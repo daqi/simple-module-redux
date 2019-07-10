@@ -16,15 +16,15 @@ export function smrNameCheck(name, type) {
   const typeStr = type ? type + ' ' : '';
   
   if (!name) {
-    throw new Error(`${typeStr}name is required`);
+    throw new Error(`${typeStr}name is required.`);
   }
 
   if (name.indexOf('/') >= 0) {
-    throw new Error(`${typeStr}name can not has "/"`);
+    throw new Error(`${typeStr}name can not has "/".`);
   }
 
   if (name.indexOf(' ') >= 0) {
-    throw new Error(`${typeStr}name can not has " "`);
+    throw new Error(`${typeStr}name can not has " ".`);
   }
 }
 

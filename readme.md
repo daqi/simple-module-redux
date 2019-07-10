@@ -56,14 +56,13 @@ const moduleDemo = {
 const modules = {
     [demoModule.name]: demoModule,
     [otherModule.name]: otherModule,
-    [listModule.name]: listModule,
-    [itemModule.name]: itemModule
+    // ...
 }
 ```
 
 ## Usage
 
-### with smrCreateStore
+### use smrCreateStore
 
 ```javascript
 import { smrCreateStore } from 'simple-module-redux';
@@ -87,24 +86,7 @@ store.dispatch({
 });
 ```
 
-## Other
-
-### smrMiddleware & generateReducer
-
-```javascript
-import { createStore, applyMiddleware } from 'redux';
-import { smrMiddleware, generateReducer } from 'simple-module-redux';
-import reduxLogger from 'redux-logger';
-import modules from './modules';
-const reducer = generateReducer(modules);
-const store = createStore(
-    reducer,
-    preloadedState,
-    applyMiddleware(smrMiddleware, reduxLogger)
-);
-```
-
-### smrEnhancer
+### use smrEnhancer
 
 ```javascript
 import { createStore, compose } from 'redux';
@@ -118,5 +100,20 @@ const store = createStore(
         smrEnhancer,
         applyMiddleware(reduxLogger)
     )
+);
+```
+
+### use smrMiddleware & generateReducer
+
+```javascript
+import { createStore, applyMiddleware } from 'redux';
+import { smrMiddleware, generateReducer } from 'simple-module-redux';
+import reduxLogger from 'redux-logger';
+import modules from './modules';
+const reducer = generateReducer(modules);
+const store = createStore(
+    reducer,
+    preloadedState,
+    applyMiddleware(smrMiddleware, reduxLogger)
 );
 ```

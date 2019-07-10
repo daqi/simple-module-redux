@@ -7,21 +7,21 @@ export function generateSmrReducer(module) {
   const { name, state: oState, actions, reducers } = module;
 
   if (!isPlainObject(module)) {
-    throw new Error('module must be plain objects. ');
+    throw new Error('module must be plain objects.');
   }
 
   smrNameCheck(name);
 
   if (!isPlainObject(oState)) {
-    throw new Error('module.state must be plain objects. ');
+    throw new Error('module.state must be plain objects.');
   }
 
   if (!isPlainObject(actions)) {
-    throw new Error('module.actions must be plain objects. ');
+    throw new Error('module.actions must be plain objects.');
   }
 
   if (!isPlainObject(reducers)) {
-    throw new Error('module.reducers must be plain objects. ');
+    throw new Error('module.reducers must be plain objects.');
   }
 
   for (let key in actions) {
@@ -51,7 +51,7 @@ export function generateSmrReducer(module) {
 
 export default function generateSmrReducers(modules) {
   if (!isPlainObject(modules)) {
-    throw new Error('Modules must be plain objects. ');
+    throw new Error('Modules must be plain objects.');
   }
 
   const reducers = {};
