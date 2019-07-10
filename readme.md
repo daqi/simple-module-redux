@@ -73,15 +73,15 @@ const store = smrCreateStore(
     applyMiddleware(reduxLogger)
 );
 store.dispatch({
-    type: 'number/add',
+    type: 'demo/add',
     payload: 5
 });
 store.dispatch({
-    type: 'number/minus',
+    type: 'demo/minus',
     payload: 3
 });
 store.dispatch({
-    type: 'number/asyncUpdate',
+    type: 'demo/asyncUpdate',
     payload: 666
 });
 ```
