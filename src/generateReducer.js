@@ -36,7 +36,7 @@ export default function generateSmrReducers(modules) {
   }
   const reducers = {};
   Object.keys(modules).forEach(key => {
-    reducers[key] = generateSmrReducer(modules[key]);
+    reducers[modules.name] = generateSmrReducer(modules[key]);
   });
   return combineReducers(reducers);
 }
