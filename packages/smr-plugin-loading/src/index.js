@@ -12,7 +12,7 @@ export const LoadingModule = {
       return {
         ...restState,
         global: global + 1,
-        [payload.actionName]: true
+        [payload]: true
       };
     },
     [HIDE](state, payload) {
@@ -20,7 +20,7 @@ export const LoadingModule = {
       return {
         ...restState,
         global: global - 1,
-        [payload.actionName]: false
+        [payload]: false
       };
     }
   },
@@ -66,9 +66,9 @@ export default function withLoading(config = {}) {
           const res = originAction(...args);
           // if res is Promise
           if (res && res instanceof Promise) {
-            args[0].commit(SHOW, { actionName: key });
+            args[0].commit({ type: SHOW, payload: key });
             res.finally(() => {
-              args[0].commit(HIDE, { actionName: key });
+              args[0].commit({ type: HIDE, payload: key });
             });
           }
 
