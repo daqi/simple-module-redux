@@ -60,11 +60,12 @@ export default function generateSmrReducers(modules, plugins=[]) {
 
   const reducers = {};
   Object.keys(modules).forEach(key => {
-    if (modules.name in reducers) {
-      throw new Error(`modules.name ${modules.name} is duplicated.`);
+    const module = modules[key]
+    if (module.name in reducers) {
+      throw new Error(`modules.name ${module.name} is duplicated.`);
     }
     const wrapper = compose(...plugins);
-    reducers[modules.name] = generateSmrReducer(wrapper(modules[key]));
+    reducers[module.name] = generateSmrReducer(wrapper(module));
   });
 
   return combineReducers(reducers);
