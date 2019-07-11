@@ -1,8 +1,9 @@
 const SHOW = '@@LOADING@@SHOW';
 const HIDE = '@@LOADING@@HIDE';
+const moduleName = 'loading';
 
 export const LoadingModule = {
-  name: 'loading',
+  name: moduleName,
   state: {
     global: 0 // 全局
   },
@@ -67,9 +68,9 @@ export default function withLoading(config = {}) {
           const { dispatch } = args[0];
           // if res is Promise
           if (res && res instanceof Promise) {
-            dispatch({ type: SHOW, payload: key });
+            dispatch({ type: moduleName + '/' + SHOW, payload: key });
             res.finally(() => {
-              dispatch({ type: HIDE, payload: key });
+              dispatch({ type: moduleName + '/' + HIDE, payload: key });
             });
           }
 
