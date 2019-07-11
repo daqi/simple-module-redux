@@ -1,5 +1,5 @@
-const SHOW = '@@LOADING/SHOW';
-const HIDE = '@@LOADING/HIDE';
+const SHOW = '@@LOADING@@SHOW';
+const HIDE = '@@LOADING@@HIDE';
 
 export const LoadingModule = {
   name: 'loading',
