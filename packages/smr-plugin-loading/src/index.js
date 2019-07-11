@@ -64,11 +64,12 @@ export default function withLoading(config = {}) {
         const originAction = Module.actions[key];
         Module.actions[key] = (...args) => {
           const res = originAction(...args);
+          const { dispatch } = args[0];
           // if res is Promise
           if (res && res instanceof Promise) {
-            args[0].commit({ type: SHOW, payload: key });
+            dispatch({ type: SHOW, payload: key });
             res.finally(() => {
-              args[0].commit({ type: HIDE, payload: key });
+              dispatch({ type: HIDE, payload: key });
             });
           }
 

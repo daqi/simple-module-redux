@@ -5,6 +5,5 @@ module.exports = {
   jsxBracketSameLine: false,
   useTabs: false,
   semi: true,
-  bracketSpacing: true,
-  eslintIntegration: true
+  bracketSpacing: true
 };

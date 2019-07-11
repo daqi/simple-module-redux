@@ -15,7 +15,8 @@
         "build": "father build",
         "version": "lerna version",
         "publish": "lerna publish",
-        "bnp": "father build && lerna publish"
+        "bnp": "father build && lerna publish",
+        "prettier": "prettier --write **/src/*"
     },
     "devDependencies": {
         "eslint": "^5.16.0",

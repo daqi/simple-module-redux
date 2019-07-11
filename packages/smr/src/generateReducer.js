@@ -53,14 +53,14 @@ export function generateSmrReducer(module) {
   };
 }
 
-export default function generateSmrReducers(modules, plugins=[]) {
+export default function generateSmrReducers(modules, plugins = []) {
   if (!isPlainObject(modules)) {
     throw new Error('Modules must be plain objects.');
   }
 
   const reducers = {};
   Object.keys(modules).forEach(key => {
-    const module = modules[key]
+    const module = modules[key];
     if (module.name in reducers) {
       throw new Error(`modules.name ${module.name} is duplicated.`);
     }

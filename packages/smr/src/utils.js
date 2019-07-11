@@ -14,7 +14,7 @@ export function getSmrName(action) {
 
 export function smrNameCheck(name, type) {
   const typeStr = type ? type + ' ' : '';
-  
+
   if (!name) {
     throw new Error(`${typeStr}name is required.`);
   }
