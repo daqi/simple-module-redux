@@ -1,16 +1,8 @@
-/**
- * 使用方法
- * ```
- *  modules: {
- *    LoadingModule,
- *    app: loadingWrap(AppModule),
- *  }
- * ```
- */
 const SHOW = '@@LOADING/SHOW';
 const HIDE = '@@LOADING/HIDE';
 
 export const LoadingModule = {
+  name: 'loading',
   state: {
     global: 0 // 全局
   },

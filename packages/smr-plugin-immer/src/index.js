@@ -1,25 +1,5 @@
 import produce from 'immer';
 
-/**
- * 使用方法：
- * ```
- *  modules: {
- *    LoadingModule,
- *    app: withImmer(AppModule),
- *  }
- * ```
- * reducer
- * ```
- * reducers: {
- *   ['XXXXX_SAVE'](state, payload) {
- *    return { ...state, ...payload };
- *   },
- *   ['XXXXX_SETIN'](state, { path, value }) {
- *    return _set(state, path, value);
- *   },
- * }
- * ```
- */
 const isArr = Array.isArray;
 const isFunc = el => typeof el === 'function';
 

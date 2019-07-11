@@ -122,7 +122,7 @@ const store = createStore(
 
 ## plugins
 
-`smr-plugin-immer`, `smr-plugin-loading`
+We has most popular plugin, `smr-plugin-immer`, `smr-plugin-loading`.
 
 ### use smrCreateStoreWithPlugin
 

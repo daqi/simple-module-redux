@@ -14,9 +14,11 @@ npm install smr-plugin-loading
 
 ```javascript
 import { smrCreateStoreWithPlugin } from 'simple-module-redux';
-import withLoading from 'smr-plugin-loading';
+import withLoading, { LoadingModule } from 'smr-plugin-loading';
 import reduxLogger from 'redux-logger';
-const smrCreateStore = smrCreateStoreWithPlugin([withLoading()])
+import modules from './modules';
+modules[LoadingModule.name] = LoadingModule;
+const smrCreateStore = smrCreateStoreWithPlugin([withLoading()]);
 const store = smrCreateStore(
   modules,
   preloadedState,
@@ -29,10 +31,11 @@ const store = smrCreateStore(
 ```javascript
 import { createStore, compose } from 'redux';
 import { smrEnhancerWidthPlugin } from 'simple-module-redux';
-import withLoading from 'smr-plugin-loading';
+import withLoading, { LoadingModule } from 'smr-plugin-loading';
 import reduxLogger from 'redux-logger';
 import modules from './modules';
-const smrEnhancer = smrEnhancerWidthPlugin([withLoading()])
+modules[LoadingModule.name] = LoadingModule;
+const smrEnhancer = smrEnhancerWidthPlugin([withLoading()]);
 const store = createStore(
   modules,
   preloadedState,
@@ -48,9 +51,10 @@ const store = createStore(
 ```javascript
 import { createStore, applyMiddleware } from 'redux';
 import { smrMiddleware, generateReducer } from 'simple-module-redux';
-import withLoading from 'smr-plugin-loading';
+import withLoading, { LoadingModule } from 'smr-plugin-loading';
 import reduxLogger from 'redux-logger';
 import modules from './modules';
+modules[LoadingModule.name] = LoadingModule;
 const reducer = generateReducer(modules, [withLoading()]);
 const store = createStore(
   reducer,

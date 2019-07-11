@@ -63,8 +63,8 @@ export default function generateSmrReducers(modules, plugins=[]) {
     if (modules.name in reducers) {
       throw new Error(`modules.name ${modules.name} is duplicated.`);
     }
-    const plugin = compose(...plugins);
-    reducers[modules.name] = generateSmrReducer(plugin(modules[key]));
+    const wrapper = compose(...plugins);
+    reducers[modules.name] = generateSmrReducer(wrapper(modules[key]));
   });
 
   return combineReducers(reducers);
