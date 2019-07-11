@@ -1,6 +1,6 @@
-const SHOW = '@@LOADING@@SHOW';
-const HIDE = '@@LOADING@@HIDE';
-const moduleName = 'loading';
+const SHOW = 'SHOW';
+const HIDE = 'HIDE';
+const moduleName = '@@SMRLoading';
 
 export const LoadingModule = {
   name: moduleName,
@@ -9,18 +9,16 @@ export const LoadingModule = {
   },
   reducers: {
     [SHOW](state, payload) {
-      const { global, ...restState } = state;
       return {
-        ...restState,
-        global: global + 1,
+        ...state,
+        global: state.global + 1,
         [payload]: true
       };
     },
     [HIDE](state, payload) {
-      const { global, ...restState } = state;
       return {
-        ...restState,
-        global: global - 1,
+        ...state,
+        global: state.global - 1,
         [payload]: false
       };
     }
