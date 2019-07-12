@@ -42,8 +42,8 @@ export function generateSmrReducer(module) {
 
   return function(state, action) {
     if (isSmrReducer(action) && action.type.indexOf(name) === 0) {
-      const { type, ...otherArgs } = action;
-      state = smrReducers[type](state, ...otherArgs);
+      const { type, payload, ...extra } = action;
+      state = smrReducers[type](state, payload, extra);
     }
 
     if (!state) {

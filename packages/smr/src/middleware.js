@@ -23,7 +23,7 @@ const smrMiddleware = ({ getState, dispatch }) => next => action => {
       return dispatch(action);
     };
 
-    const { type, ...otherArgs } = action;
+    const { type, payload, ...extra } = action;
     return smrActions[type](
       {
         rootState,
@@ -31,7 +31,8 @@ const smrMiddleware = ({ getState, dispatch }) => next => action => {
         commit,
         dispatch
       },
-      ...otherArgs
+      payload,
+      extra
     );
   }
 
