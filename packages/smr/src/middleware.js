@@ -1,5 +1,5 @@
 import smrActions from './actionMap';
-import { isSmrAction, getSmrName } from './utils';
+import { isSmrAction, isSmrReducer, getSmrName } from './utils';
 
 const smrMiddleware = ({ getState, dispatch }) => next => action => {
   if (isSmrAction(action)) {
@@ -7,8 +7,8 @@ const smrMiddleware = ({ getState, dispatch }) => next => action => {
     let name = getSmrName(action);
 
     const commit = action => {
-      if (isSmrAction(action)) {
-        return dispatch(action);
+      if (isSmrReducer(action)) {
+        return next(action);
       }
 
       const smrAction = {
@@ -16,11 +16,11 @@ const smrMiddleware = ({ getState, dispatch }) => next => action => {
         type: name + '/' + action.type
       };
 
-      if (isSmrAction(smrAction)) {
-        return dispatch(smrAction);
+      if (isSmrReducer(smrAction)) {
+        return next(smrAction);
       }
 
-      return dispatch(action);
+      return next(action);
     };
 
     const { type, payload, ...extra } = action;
