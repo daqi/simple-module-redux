@@ -1,40 +1,48 @@
 {
-    "name": "simple-module-redux",
-    "version": "0.0.15",
-    "license": "MIT",
-    "repository": "https://github.com/daqi/simple-module-redux.git",
-    "keywords": [
-        "redux",
-        "middleware",
-        "redux-middleware",
-        "module"
+  "name": "simple-module-redux",
+  "version": "0.0.15",
+  "license": "MIT",
+  "repository": "https://github.com/daqi/simple-module-redux.git",
+  "keywords": [
+    "redux",
+    "middleware",
+    "redux-middleware",
+    "module"
+  ],
+  "author": "qiyunjiang <daqidaqi@qq.com>",
+  "scripts": {
+    "init": "lerna init",
+    "build": "father build",
+    "version": "lerna version",
+    "publish": "lerna publish",
+    "bnp": "father build && lerna publish",
+    "prettier": "prettier --write **/src/*"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
+    "eslint": "^5.16.0",
+    "father": "^2.13.4",
+    "husky": "^3.0.0",
+    "lerna": "^3.15.0",
+    "lint-staged": "^9.1.0",
+    "prettier": "^1.18.2"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,cjs,mjs}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
     ],
-    "author": "qiyunjiang <daqidaqi@qq.com>",
-    "scripts": {
-        "init": "lerna init",
-        "build": "father build",
-        "version": "lerna version",
-        "publish": "lerna publish",
-        "bnp": "father build && lerna publish",
-        "prettier": "prettier --write **/src/*"
-    },
-    "devDependencies": {
-        "eslint": "^5.16.0",
-        "father": "^2.13.4",
-        "husky": "^3.0.0",
-        "lerna": "^3.15.0",
-        "lint-staged": "^9.1.0",
-        "prettier": "^1.18.2"
-    },
-    "lint-staged": {
-        "*.{js,jsx,ts,tsx,cjs,mjs}": [
-            "eslint --fix",
-            "prettier --write",
-            "git add"
-        ],
-        "*.{json,md,css,less,sass,scss}": [
-            "prettier --write",
-            "git add"
-        ]
+    "*.{json,md,css,less,sass,scss}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  }
 }
