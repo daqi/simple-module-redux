@@ -6,16 +6,32 @@ const smrMiddleware = ({ getState, dispatch }) => next => action => {
     const rootState = getState();
     let name = getSmrName(action);
 
-    return smrActions[action.type](
+    const commit = action => {
+      if (isSmrAction(action)) {
+        return dispatch(action);
+      }
+
+      const smrAction = {
+        ...action,
+        type: name + '/' + action.type
+      };
+
+      if (isSmrAction(smrAction)) {
+        return dispatch(smrAction);
+      }
+
+      return dispatch(action);
+    };
+
+    const { type, ...otherArgs } = action;
+    return smrActions[type](
       {
         rootState,
         state: rootState[name],
-        commit: ({ type, payload }) => {
-          next({ type: name + '/' + type, payload });
-        },
+        commit,
         dispatch
       },
-      action.payload
+      ...otherArgs
     );
   }
 
