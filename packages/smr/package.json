@@ -15,7 +15,8 @@
     "files": [
         "lib",
         "es",
-        "src"
+        "src",
+        "typings.d.ts"
     ],
     "dependencies": {
         "redux": "^4.0.3"
