@@ -1,24 +1,24 @@
 {
-    "name": "smr-plugin-loading",
-    "version": "0.1.6",
-    "license": "MIT",
-    "repository": "https://github.com/daqi/simple-module-redux.git",
-    "keywords": [
-        "smr",
-        "plugin",
-        "loading",
-        "redux"
-    ],
-    "author": "qiyunjiang <daqidaqi@qq.com>",
-    "main": "lib/index.js",
-    "module": "es/index.js",
-    "files": [
-        "lib",
-        "es",
-        "src"
-    ],
-    "peerdependencies": {
-        "smr": "^4.0.3"
-    },
-    "gitHead": "c99ea1d2de41bc6eccdc594a84f9709dfe0fa1e1"
+  "name": "smr-plugin-loading",
+  "version": "0.1.10-alpha.0",
+  "license": "MIT",
+  "repository": "https://github.com/daqi/simple-module-redux.git",
+  "keywords": [
+    "smr",
+    "plugin",
+    "loading",
+    "redux"
+  ],
+  "author": "qiyunjiang <daqidaqi@qq.com>",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "lib",
+    "es",
+    "src"
+  ],
+  "peerdependencies": {
+    "smr": "^4.0.3"
+  },
+  "gitHead": "c99ea1d2de41bc6eccdc594a84f9709dfe0fa1e1"
 }

@@ -1,25 +1,25 @@
 {
-    "name": "simple-module-redux",
-    "version": "0.1.9",
-    "license": "MIT",
-    "repository": "https://github.com/daqi/simple-module-redux.git",
-    "keywords": [
-        "redux",
-        "middleware",
-        "redux-middleware",
-        "module"
-    ],
-    "author": "qiyunjiang <daqidaqi@qq.com>",
-    "main": "lib/index.js",
-    "module": "es/index.js",
-    "files": [
-        "lib",
-        "es",
-        "src",
-        "typings.d.ts"
-    ],
-    "dependencies": {
-        "redux": "^4.0.3"
-    },
-    "gitHead": "c99ea1d2de41bc6eccdc594a84f9709dfe0fa1e1"
+  "name": "simple-module-redux",
+  "version": "0.1.10-alpha.0",
+  "license": "MIT",
+  "repository": "https://github.com/daqi/simple-module-redux.git",
+  "keywords": [
+    "redux",
+    "middleware",
+    "redux-middleware",
+    "module"
+  ],
+  "author": "qiyunjiang <daqidaqi@qq.com>",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "lib",
+    "es",
+    "src",
+    "typings.d.ts"
+  ],
+  "dependencies": {
+    "redux": "^4.0.3"
+  },
+  "gitHead": "c99ea1d2de41bc6eccdc594a84f9709dfe0fa1e1"
 }

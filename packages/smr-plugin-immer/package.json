@@ -1,27 +1,27 @@
 {
-    "name": "smr-plugin-immer",
-    "version": "0.1.0",
-    "license": "MIT",
-    "repository": "https://github.com/daqi/simple-module-redux.git",
-    "keywords": [
-        "smr",
-        "plugin",
-        "rimmer",
-        "redux"
-    ],
-    "author": "qiyunjiang <daqidaqi@qq.com>",
-    "main": "lib/index.js",
-    "module": "es/index.js",
-    "files": [
-        "lib",
-        "es",
-        "src"
-    ],
-    "dependencies": {
-        "immer": "^1.10.0"
-    },
-    "peerdependencies": {
-        "smr": "^4.0.3"
-    },
-    "gitHead": "c99ea1d2de41bc6eccdc594a84f9709dfe0fa1e1"
+  "name": "smr-plugin-immer",
+  "version": "0.1.10-alpha.0",
+  "license": "MIT",
+  "repository": "https://github.com/daqi/simple-module-redux.git",
+  "keywords": [
+    "smr",
+    "plugin",
+    "rimmer",
+    "redux"
+  ],
+  "author": "qiyunjiang <daqidaqi@qq.com>",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "lib",
+    "es",
+    "src"
+  ],
+  "dependencies": {
+    "immer": "^1.10.0"
+  },
+  "peerdependencies": {
+    "smr": "^4.0.3"
+  },
+  "gitHead": "c99ea1d2de41bc6eccdc594a84f9709dfe0fa1e1"
 }
