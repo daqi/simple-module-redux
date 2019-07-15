@@ -3,8 +3,10 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import generateReducer from './generateReducer';
 import smrMiddleware from './middleware';
 
-export function smrCreateStoreWithPlugin(plugins) {
-  return (modules, preloadedState, enhancer) => {
+import * as Smr from '../typings';
+
+export const smrCreateStoreWithPlugin: Smr.SmrCreateStoreWithPlugin = function(plugins) {
+  return function(modules, preloadedState, enhancer) {
     const reducer = generateReducer(modules, plugins);
     if (
       typeof preloadedState === 'function' &&

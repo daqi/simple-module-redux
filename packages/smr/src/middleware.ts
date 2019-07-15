@@ -1,12 +1,14 @@
 import smrActions from './actionMap';
 import { isSmrAction, isSmrReducer, getSmrName } from './utils';
+import * as Redux from 'redux';
+import * as Smr from '../typings'
 
-const smrMiddleware = ({ getState, dispatch }) => next => action => {
+const smrMiddleware: Redux.Middleware = ({ getState, dispatch }) => next => action => {
   if (isSmrAction(action)) {
     const rootState = getState();
     let name = getSmrName(action);
 
-    const commit = action => {
+    const commit: Smr.Commit = action => {
       if (isSmrReducer(action)) {
         return next(action);
       }
@@ -24,6 +26,7 @@ const smrMiddleware = ({ getState, dispatch }) => next => action => {
     };
 
     const { type, payload, ...extra } = action;
+
     return smrActions[type](
       {
         rootState,

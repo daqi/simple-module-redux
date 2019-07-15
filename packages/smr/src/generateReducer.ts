@@ -3,7 +3,10 @@ import smrActions from './actionMap';
 import smrReducers from './reducerMap';
 import { smrNameCheck, isSmrReducer, isPlainObject } from './utils';
 
-export function generateSmrReducer(module) {
+import * as Redux from 'redux';
+import * as Smr from '../typings';
+
+export const generateSmrReducer: Smr.GenerateSmrReducer = function(module) {
   const { name, state: oState, actions, reducers } = module;
 
   if (!isPlainObject(module)) {
@@ -40,7 +43,7 @@ export function generateSmrReducer(module) {
     }
   }
 
-  return function(state, action) {
+  const reducer: Redux.Reducer = (state, action) => {
     if (isSmrReducer(action) && action.type.indexOf(name + '/') === 0) {
       const { type, payload, ...extra } = action;
       state = smrReducers[type](state, payload, extra);
@@ -52,9 +55,10 @@ export function generateSmrReducer(module) {
 
     return state;
   };
-}
+  return reducer;
+};
 
-export default function generateSmrReducers(modules, plugins = []) {
+const generateSmrReducers: Smr.GenerateSmrReducers = function(modules, plugins = []) {
   if (!isPlainObject(modules)) {
     throw new Error('Modules must be plain objects.');
   }
@@ -65,9 +69,11 @@ export default function generateSmrReducers(modules, plugins = []) {
     if (module.name in reducers) {
       throw new Error(`modules.name ${module.name} is duplicated.`);
     }
-    const wrapper = compose(...plugins);
+    const wrapper: Smr.SmrPlugin = compose(...plugins);
     reducers[module.name] = generateSmrReducer(wrapper(module));
   });
 
   return combineReducers(reducers);
-}
+};
+
+export default generateSmrReducers;

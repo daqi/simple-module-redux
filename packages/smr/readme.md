@@ -139,16 +139,16 @@ const store = smrCreateStore(
 );
 ```
 
-### use smrEnhancerWidthPlugin
+### use smrEnhancerWithPlugin
 
 ```javascript
 import { createStore, compose } from 'redux';
-import { smrEnhancerWidthPlugin } from 'simple-module-redux';
+import { smrEnhancerWithPlugin } from 'simple-module-redux';
 import withImmer from 'smr-plugin-immer';
 import withLoading from 'smr-plugin-loading';
 import reduxLogger from 'redux-logger';
 import modules from './modules';
-const smrEnhancer = smrEnhancerWidthPlugin([withImmer(), withLoading()]);
+const smrEnhancer = smrEnhancerWithPlugin([withImmer(), withLoading()]);
 const store = createStore(
   modules,
   preloadedState,

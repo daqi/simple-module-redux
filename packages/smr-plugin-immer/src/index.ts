@@ -1,14 +1,19 @@
 import produce from 'immer';
 
 const isArr = Array.isArray;
-const isFunc = el => typeof el === 'function';
+const isFunc = (obj: any) => typeof obj === 'function';
 
-function valid(config, key) {
+interface Config{
+  whitelist?: any,
+  blacklist?: any,
+}
+
+function valid(config: Config, key: string) {
   if (config.whitelist) {
     if (isArr(config.whitelist) && !config.whitelist.includes(key)) {
       return false;
     }
-    if (isFunc(config.whitelist) && !config.whitelist.some(key)) {
+    if (isFunc(config.whitelist) && !config.whitelist(key)) {
       return false;
     }
   }
@@ -16,7 +21,7 @@ function valid(config, key) {
     if (isArr(config.blacklist) && config.blacklist.includes(key)) {
       return false;
     }
-    if (isFunc(config.blacklist) && config.blacklist.some(key)) {
+    if (isFunc(config.blacklist) && config.blacklist(key)) {
       return false;
     }
   }
@@ -26,8 +31,8 @@ function valid(config, key) {
 /**
  * @param config: { whitelist: [ actionName ], blacklist: [ actionName ] }
  */
-export default function withImmer(config = {}) {
-  return function useImmer(Module) {
+export default function withImmer(config: {}) {
+  return function useImmer(Module: any) {
     // console.log('withImmer')
     if (!Module) return;
     Module.__withImmer = true;
@@ -35,7 +40,7 @@ export default function withImmer(config = {}) {
       Object.keys(Module.reducers).forEach(key => {
         const originReducer = Module.reducers[key];
         if (!valid(config, key)) return;
-        Module.reducers[key] = (state, payload) => {
+        Module.reducers[key] = (state: any, payload?: any) => {
           if (typeof state === 'object') {
             const ret = produce(state, draft => {
               const next = originReducer(draft, payload);

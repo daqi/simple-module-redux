@@ -2,20 +2,25 @@ const SHOW = 'SHOW';
 const HIDE = 'HIDE';
 const moduleName = '@@SMRLoading';
 
+interface Config{
+  whitelist?: any,
+  blacklist?: any,
+}
+
 export const LoadingModule = {
   name: moduleName,
   state: {
     global: 0 // 全局
   },
   reducers: {
-    [SHOW](state, payload) {
+    [SHOW](state: any, payload: string) {
       return {
         ...state,
         global: state.global + 1,
         [payload]: true
       };
     },
-    [HIDE](state, payload) {
+    [HIDE](state: any, payload: string) {
       return {
         ...state,
         global: state.global - 1,
@@ -27,9 +32,9 @@ export const LoadingModule = {
 };
 
 const isArr = Array.isArray;
-const isFunc = el => typeof el === 'function';
+const isFunc = (obj: any) => typeof obj === 'function';
 
-function valid(config, key) {
+function valid(config: Config, key: string) {
   if (config.whitelist) {
     if (isArr(config.whitelist) && !config.whitelist.includes(key)) {
       return false;
@@ -53,7 +58,7 @@ function valid(config, key) {
  * @param config: { whitelist: [ actionName ], blacklist: [ actionName ] }
  */
 export default function withLoading(config = {}) {
-  return function useLoading(Module) {
+  return function useLoading(Module: any) {
     // console.log('useLoading')
     if (!Module) return;
     Module.__useLoading = true;
@@ -61,7 +66,7 @@ export default function withLoading(config = {}) {
       Object.keys(Module.actions).forEach(key => {
         if (!valid(config, key)) return;
         const originAction = Module.actions[key];
-        Module.actions[key] = (...args) => {
+        Module.actions[key] = (...args: any) => {
           const res = originAction(...args);
           const { dispatch } = args[0];
           // if res is Promise

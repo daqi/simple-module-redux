@@ -3,7 +3,9 @@ import { applyMiddleware } from 'redux';
 import generateReducer from './generateReducer';
 import smrMiddleware from './middleware';
 
-export function smrEnhancerWidthPlugin(plugins) {
+import * as Smr from '../typings'
+
+export const smrEnhancerWithPlugin: Smr.SmrEnhancerWithPlugin = function(plugins) {
   return createStore => {
     return (modules, preloadedState) => {
       const reducer = generateReducer(modules, plugins);
@@ -11,9 +13,9 @@ export function smrEnhancerWidthPlugin(plugins) {
 
       return enhancer(createStore)(reducer, preloadedState);
     };
-  };
+  }
 }
 
-const smrEnhancer = smrEnhancerWidthPlugin();
+const smrEnhancer = smrEnhancerWithPlugin();
 
 export default smrEnhancer;

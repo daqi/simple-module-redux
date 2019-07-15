@@ -1,18 +1,20 @@
+import * as Smr from '../typings';
+
 import smrActions from './actionMap';
 import smrReducers from './reducerMap';
 
-export function isSmrAction(action) {
+export const isSmrAction: Smr.IsSmrAction = function(action) {
   return 'type' in action && action.type in smrActions;
-}
-export function isSmrReducer(action) {
+};
+export const isSmrReducer: Smr.IsSmrReducer = function(action) {
   return 'type' in action && action.type in smrReducers;
-}
+};
 
-export function getSmrName(action) {
+export const getSmrName: Smr.GetSmrName = function(action) {
   return isSmrAction(action) ? action.type.split('/')[0] : '';
-}
+};
 
-export function smrNameCheck(name, type) {
+export const smrNameCheck: Smr.SmrNameCheck = function(name, type) {
   const typeStr = type ? type + ' ' : '';
 
   if (!name) {
@@ -26,13 +28,9 @@ export function smrNameCheck(name, type) {
   if (name.indexOf(' ') >= 0) {
     throw new Error(`${typeStr}name can not has " ".`);
   }
-}
+};
 
-/**
- * @param {any} obj The object to inspect.
- * @returns {boolean} True if the argument appears to be a plain object.
- */
-export function isPlainObject(obj) {
+export const isPlainObject: Smr.IsPlainObject = function(obj) {
   if (typeof obj !== 'object' || obj === null) return false;
 
   let proto = obj;
@@ -41,4 +39,4 @@ export function isPlainObject(obj) {
   }
 
   return Object.getPrototypeOf(obj) === proto;
-}
+};
