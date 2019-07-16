@@ -58,12 +58,15 @@ export const generateSmrReducer: Smr.GenerateSmrReducer = function(module) {
   return reducer;
 };
 
-const generateSmrReducers: Smr.GenerateSmrReducers = function(modules, plugins = []) {
+const generateSmrReducers: Smr.GenerateSmrReducers = function(
+  modules,
+  plugins = []
+) {
   if (!isPlainObject(modules)) {
     throw new Error('Modules must be plain objects.');
   }
 
-  const reducers = {};
+  const reducers: Redux.ReducersMapObject = {};
   Object.keys(modules).forEach(key => {
     const module = modules[key];
     if (module.name in reducers) {
