@@ -12,6 +12,7 @@
   "author": "qiyunjiang <daqidaqi@qq.com>",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "typings": "src/index.ts",
   "files": [
     "lib",
     "es",
