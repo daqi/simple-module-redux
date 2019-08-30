@@ -128,5 +128,9 @@ export interface SmrCreateStoreWithPlugin {
 }
 
 export interface SmrCreateStore {
-  (modules: Modules, ...arg: any[]): Redux.Store;
+  <S>(
+    modules: Modules,
+    preloadedState?: Redux.DeepPartial<S>,
+    enhancer?: Redux.StoreEnhancer
+  ): Redux.Store;
 }

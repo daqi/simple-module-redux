@@ -37,20 +37,36 @@ export const generateSmrReducer: Smr.GenerateSmrReducer = function(module) {
 
   if (reducers) {
     for (let key in reducers) {
-      smrNameCheck(key, 'reducer');
-      const type = name + '/' + key;
-      smrReducers[type] = reducers[key];
+      // 支持跨module reducer
+      if (key.indexOf('/') > 0) {
+        const _name = key.split('/')[0];
+        if (_name === name) {
+          throw new Error('current module reducer name can not has "/".');
+        }
+        if (smrReducers[key]) {
+          smrReducers[key] = (...arg) => {
+            reducers[key](...arg);
+            smrReducers[key](...arg);
+          };
+        } else {
+          smrReducers[key] = reducers[key];
+        }
+      } else {
+        smrNameCheck(key, 'reducer');
+        const type = name + '/' + key;
+        smrReducers[type] = reducers[key];
+      }
     }
   }
 
-  const reducer: Redux.Reducer = (state, action) => {
+  const reducer: Redux.Reducer = (state = oState, action) => {
     if (isSmrReducer(action) && action.type.indexOf(name + '/') === 0) {
       const { type, payload, ...extra } = action;
       state = smrReducers[type](state, payload, extra);
     }
 
-    if (!state) {
-      state = oState;
+    if (!isPlainObject(state)) {
+      throw new Error('next state must be plain objects.');
     }
 
     return state;
