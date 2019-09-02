@@ -43,13 +43,15 @@ export const generateSmrReducer: Smr.GenerateSmrReducer = function(module) {
         if (_name === name) {
           throw new Error('current module reducer name can not has "/".');
         }
-        if (smrReducers[key]) {
+        const prevReducer = smrReducers[key];
+        const currentReducer = reducers[key];
+        if (prevReducer) {
           smrReducers[key] = (...arg) => {
-            reducers[key](...arg);
-            smrReducers[key](...arg);
+            currentReducer(...arg);
+            prevReducer(...arg);
           };
         } else {
-          smrReducers[key] = reducers[key];
+          smrReducers[key] = currentReducer;
         }
       } else {
         smrNameCheck(key, 'reducer');
